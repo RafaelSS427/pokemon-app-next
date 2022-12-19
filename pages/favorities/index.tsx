@@ -13,7 +13,7 @@ const FavoritiesPage = () => {
   }, [])
 
   return (
-    <MainLayout>
+    <MainLayout title="Pokemon APP">
 
       {
         favoritiePokemons.length === 0

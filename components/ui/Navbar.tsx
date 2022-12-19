@@ -30,7 +30,7 @@ export const Navbar = () => {
       <NoSsr>
         <Link href="/">
           <Text color="white" h2>P</Text>
-          <Text color="white" h3>okemon</Text>
+          <Text color="white" h3>okémon!</Text>
         </Link>
       </NoSsr>
 
