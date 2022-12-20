@@ -1,9 +1,12 @@
-import NextLink from 'next/link'
 import { CSSProperties } from "react"
-import { Spacer, Text, useTheme, Link } from '@nextui-org/react'
+import NextLink from 'next/link'
 import Image from "next/image"
-import { NoSsr } from '../shared'
-import { useIsMounted } from '../../hooks/useIsMounted'
+import { Spacer, Text, useTheme, Link } from '@nextui-org/react'
+import { ClientOnly } from "../shared"
+//import dynamic from "next/dynamic"
+
+// dynamic import -> not working when compiled react in production
+//const Link = dynamic(() => import('@nextui-org/react').then(mod => mod.Link), { ssr: false })
 
 export const Navbar = () => {
   const { theme } = useTheme()
@@ -27,21 +30,25 @@ export const Navbar = () => {
         height={70}
       />
 
-      <NoSsr>
-        <Link href="/">
-          <Text color="white" h2>P</Text>
-          <Text color="white" h3>okémon!</Text>
-        </Link>
-      </NoSsr>
+      <ClientOnly>
+        <NextLink href="/" passHref legacyBehavior>
+          <Link>
+            <Text color="white" h2>P</Text>
+            <Text color="white" h3>okémon!</Text>
+          </Link>
+        </NextLink>
+      </ClientOnly>
 
       <Spacer css={{ flex: 1 }} />
 
-      <NoSsr>
-        <Link href="/favorities">
-          <Text color="white">Favoritos</Text>
-        </Link>
-      </NoSsr>
-      
+      <ClientOnly>
+        <NextLink href="/favorities" passHref legacyBehavior>
+          <Link>
+            <Text color="white">Favoritos</Text>
+          </Link>
+        </NextLink>
+      </ClientOnly>
+
     </nav>
   )
 }

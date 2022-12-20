@@ -1,15 +1,16 @@
-import { FC, PropsWithChildren } from 'react'
+import { FC } from 'react'
 import Head from 'next/head'
 
 import { Navbar } from '../ui'
 
-interface Props extends PropsWithChildren {
+interface Props {
+    children: React.ReactNode
     title?: string
 }
 
 //const Navbar = dynamic(() => import('../ui/Navbar'), { ssr: false })
 
-const origin = typeof window === 'undefined' ? '' : window.location.origin
+//const origin = typeof window === 'undefined' ? '' : window.location.origin;
 
 export const MainLayout: FC<Props> = ({ children, title }) => {
 
@@ -21,9 +22,9 @@ export const MainLayout: FC<Props> = ({ children, title }) => {
                 <meta name="description" content={`Información sobre el pokemon ${title}`} />
                 <meta name="keywords" content={`${title}, pokemon, pokedex`} />
 
-                <meta property="og:title" content={`Información sobre ${title}`} />
+                {/* <meta property="og:title" content={`Información sobre ${title}`} />
                 <meta property="og:description" content={`Esta es la pagina sobre ${ title }`}/>
-                <meta property="og:image" content={`${origin}/img/banner.png`} />
+                <meta property="og:image" content={`test/img/banner.png`} /> */}
             </Head>
 
             {/* Navbar with next ui */}

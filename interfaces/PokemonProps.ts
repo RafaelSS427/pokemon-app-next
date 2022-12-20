@@ -1,4 +1,4 @@
-import { Sprites } from ".";
+import { Sprites } from "./pokemon-full";
 
 export interface PokemonProps {
     id: number;
